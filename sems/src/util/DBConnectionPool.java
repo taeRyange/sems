@@ -1,4 +1,4 @@
-package sems;
+package util;
 //주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석
 //test 현주 
 
@@ -20,7 +20,28 @@ import java.util.ArrayList;
 // - 사용 후 닫지 않고 반납함.
 // - 기존 커넥션이 있으면 기존 커넥션을 대여해줌.
 // => DBMS와 연결하는 시간을 줄일수있다.
- class DBConnectionPool {
+public  class DBConnectionPool {
+	String url;
+	String driver;
+	String username;
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public void setDriver(String driver) {
+		this.driver = driver;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	String password;
+	
 
 	ArrayList<Connection> list = new ArrayList<Connection>();
 

@@ -4,6 +4,28 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
 	<display-name>sems</display-name>
+	
+  <context-param>
+    <param-name>driver</param-name>
+    <param-value>com.mysql.jdbc.Driver</param-value>
+  </context-param>
+  <context-param>
+    <param-name>url</param-name>
+    <param-value>jdbc:mysql://localhost:3306/studydb</param-value>
+  </context-param>
+  <context-param>
+    <param-name>username</param-name>
+    <param-value>study</param-value>
+  </context-param>
+  <context-param>
+    <param-name>password</param-name>
+    <param-value>study</param-value>
+  </context-param>
+
+<!-- ServletContextListener 등록-->
+  <listener>
+    <listener-class>listeners.ContextLoaderListener</listener-class>
+  </listener> 
 
 	<!-- http://localhost:9999/web01/subject (엔터)
 	 클라이언트의 요청 url이 폴더까지만 지정된다면 

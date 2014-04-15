@@ -14,50 +14,44 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.SubjectDao;
+import util.DBConnectionPool;
+
 @WebServlet(value = "/subject/delete.bit")
-public class delete extends HttpServlet {
+public class SubjectDelete extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
+
+		request.setCharacterEncoding("UTF-8");
+
 		response.setContentType("text/html;charset=UTF-8");
-		// 요청 정보에서 파라미터 값 꺼내기
-		int no = Integer.parseInt(request.getParameter("no"));
-
-		Connection con = null;
-
-		DBConnectionPool dbConnectionPool = new DBConnectionPool();
-		try {
-			con = dbConnectionPool.getConnection();
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
 		PrintWriter out = response.getWriter();
-
-		out.println("<html><head><title>Delete</title></head>");
+		out.println("<html><head><title>Update</title></head><body>");
 
 		try {
-			PreparedStatement stmt = con
-			    .prepareStatement("delete from SE_SUBJS where SNO=?");
+			out.println("<h1>과목삭제</h1>");
+			SubjectDao dao = (SubjectDao)this.getServletContext().getAttribute("subjectDao");
+			
 
-			stmt.setInt(1, no);
+	int no = Integer.parseInt(request.getParameter("no"));
 
-			stmt.executeUpdate();
+			dao.delete(no);
+			out.println("삭제성공!");
 
-			out.println("<body><h1>삭제성공</h1>");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			out.println("<body><h1>삭제실패</h1>");
+		} catch (Exception e) {
+			// TODO: handle exception
 			System.out.println(e);
+			out.println("오류발생");
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
+			out.println("오류발생");
 		}
-
-		// 클라이언트에게 출력하기
 		out.println("</body></html>");
-
 	}
 
 }
