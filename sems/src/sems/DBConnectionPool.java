@@ -1,6 +1,7 @@
 package sems;
 //주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석주석
 //test 현주 
+
 /*
  * 후후~ 충돌이다!!!!!!!!!!!!!!!!!!!!!!! CRUSH~~!!!!!!!!!!
  */
@@ -49,6 +50,7 @@ import java.util.ArrayList;
 	public void closeAll() {
 		for (Connection con : list) {
 			try {	con.close();	} catch (Exception e) {	}
+			System.out.println("태량태량태량태량태량태량태량태량태량");
 			System.out.println("Bye~!! 꽝~");
 		}
 	}
