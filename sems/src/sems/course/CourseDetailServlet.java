@@ -44,7 +44,7 @@ public class CourseDetailServlet extends HttpServlet {
 			out.println("</tr>");
 			
 			out.println("<tr>");
-			out.println("	<th>과목명</th>");
+			out.println("	<th>과정명</th>");
 			out.println("	<td>" + course.getTitle() + "</td>");
 			out.println("</tr>");
 			
@@ -59,6 +59,15 @@ public class CourseDetailServlet extends HttpServlet {
 			out.println("	<th>시간</th>");
 			out.println("	<td>" + course.getHours() + "</td>");
 			out.println("</tr>");
+			
+			out.println("</table>");
+			out.println("<a href='list.bit?pageNo=1&pageSize=10'>목록</a> ");
+			out.println("<a href='delete.bit?no="
+					+ course.getNo()
+					+ "'>삭제</a> ");
+			out.println("<a href='update.bit?no="
+					+ course.getNo()
+					+ "'>변경</a><br>");
 			
 			out.println("</table>");
 		} catch (Throwable e) {

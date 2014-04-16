@@ -2,10 +2,7 @@ package sems.subject;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,47 +10,68 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.MysqlSubjectDao;
 import dao.SubjectDao;
 import util.DBConnectionPool;
 import vo.SubjectVo;
 
-@WebServlet(value = "/subject/detail.bit")
-public class SubjectDetail extends HttpServlet {
+/* 목록으로 가기, 삭제하기 링크 추가 
+ */
 
-	private static final long serialVersionUID = 1L;
+@WebServlet("/subject/detail.bit")
+@SuppressWarnings("serial")
+public class SubjectDetail extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-	    throws ServletException, IOException {
+			throws ServletException, IOException {
+
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		out.println("<html><head><title>Detail</title></head><body>");
+		out.println("<html><head><title>과목상세정보</title></head><body>");
 
-		try {
-			out.println("<h1>과목 목록</h1>");
-			SubjectDao dao = (SubjectDao)this.getServletContext().getAttribute("subjectDao");
-			
+		try{
+			out.println("<h1>과목 상세정보</h1>");
+			SubjectDao dao = (SubjectDao)this.getServletContext()
+					 .getAttribute("subjectDao");
 
 			int no = Integer.parseInt(request.getParameter("no"));
 
 			SubjectVo subject = dao.detail(no);
 
-			out.println("	<table border ='1'>");
-			out.println("	<tr> <th>번호</td><th> "+subject.getNo()+"</td></tr>");
+			out.println("<table border='1'>");
+			out.println("<tr>");
+			out.println("<th>번호</th>");
+			out.println("<td>" + subject.getNo() + "</td>");
+			out.println("</tr>");
 
-			out.println("	<tr> <th>과목명</th><td>" + subject.getTitle() + "</td></tr>");
-			
-			out.println("	<tr> <th>내용</th><td><textarea rows='5' cols='60' readonly>" + subject.getDescription() + "</textarea></td></tr>");
+			out.println("<tr>");
+			out.println("<th>과목명</th>");
+			out.println("<td>" + subject.getTitle() + "</td>");
+			out.println("</tr>");
 
-		} catch (Exception e) {
-			// TODO: handle exception
+			out.println("<tr>");
+			out.println("<th>내용</th>");
+			out.println("<td><textarea rows='5' cols='60'>"
+					+ subject.getDescription() + "</textarea></td>");
+			out.println("</tr>");
+
+			out.println("</table>");
+			out.println("<a href='list.bit?pageNo=1&pageSize=10'>목록</a> ");
+			out.println("<a href='delete.bit?no="
+					+ subject.getNo()
+					+ "'>삭제</a> ");
+			out.println("<a href='update.bit?no="
+					+ subject.getNo()
+					+ "'>변경</a><br>");
+		}catch(Throwable e){
 			out.println("오류발생");
-		} catch (Throwable e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			out.println("오류발생");
 		}
-		out.println("</table></body></html>");
+		out.println("</body></html>");
 	}
-
 }
+
+
+
+

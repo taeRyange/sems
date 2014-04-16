@@ -27,15 +27,16 @@ public class SubjectInsert extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
 
-		request.setCharacterEncoding("UTF-8");
+		//request.setCharacterEncoding("UTF-8");
 
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		out.println("<html><head><title>Detail</title></head><body>");
+		out.println("<html><head><title>과목등록</title></head><body>");
 
 		try {
 			out.println("<h1>과목등록결과</h1>");
-			SubjectDao dao = (SubjectDao)this.getServletContext().getAttribute("subjectDao");
+			SubjectDao dao = (SubjectDao)this.getServletContext()
+					.getAttribute("subjectDao");
 			
 			SubjectVo vo = new SubjectVo();
 			vo.setTitle(request.getParameter("title"));
@@ -44,14 +45,12 @@ public class SubjectInsert extends HttpServlet {
 			dao.insert(vo);
 			out.println("등록성공!");
 
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println(e);
-			out.println("오류발생");
+			response.setHeader("Refresh", "1;url=list.bit?pageNo=1&pageSize=10");
+			
 		} catch (Throwable e) {
-			// TODO Auto-generated catch block
-			System.out.println(e);
 			out.println("오류발생");
+			e.printStackTrace();
+		
 		}
 		out.println("</body></html>");
 	}

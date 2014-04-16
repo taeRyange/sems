@@ -1,4 +1,4 @@
-package sems.course;
+package sems.users;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import vo.CourseVo;
-import dao.CourseDao;
+import vo.UsersVo;
+import dao.UsersDao;
 
-@WebServlet("/course/insert.bit")
+@WebServlet("/users/insert.bit")
 @SuppressWarnings("serial")
-public class CourseInsertServlet extends HttpServlet {
+public class UsersInsertServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
@@ -30,18 +30,23 @@ public class CourseInsertServlet extends HttpServlet {
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		out.println("<html><head><title>과정등록</title></head><body bgcolor='green', style='text-align:center'>");
+		out.println("<html><head><title>유저등록</title></head><body bgcolor='#4E0085'style='text-align:center'>");
 		
 		try {
-			out.println("<h1>과정등록 결과</h1>");
+			out.println("<h1>유저등록 결과</h1>");
 			
-			CourseDao dao = (CourseDao)this.getServletContext()
-					.getAttribute("courseDao");
+			UsersDao dao = (UsersDao)this.getServletContext()
+					.getAttribute("usersDao");
 			
-			CourseVo vo = new CourseVo();
-			vo.setTitle(request.getParameter("title"));
-			vo.setDescription(request.getParameter("description"));
-			vo.setHours(Integer.parseInt(request.getParameter("hours")));
+			UsersVo vo = new UsersVo();
+			vo.setEmail(request.getParameter("email"));
+			vo.setPassword(request.getParameter("password"));
+			vo.setName(request.getParameter("name"));
+			vo.setTel(request.getParameter("tel"));
+			vo.setFax(request.getParameter("fax"));
+			vo.setPostno(request.getParameter("postno"));
+			vo.setAddress(request.getParameter("addr"));
+			vo.setPhotopath(request.getParameter("photopath"));
 			
 			dao.insert(vo);
 			

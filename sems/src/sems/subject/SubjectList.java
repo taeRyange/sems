@@ -29,7 +29,7 @@ public class SubjectList extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.println("<html><head><title>과목목록</title></head><body>");
 		try {
-			out.println("<h1>과목 목록</h1>");
+			out.println("<h1>과목목록</h1>");
 			
 			SubjectDao dao = (SubjectDao)this.getServletContext()
 																							.getAttribute("subjectDao");
@@ -39,6 +39,7 @@ public class SubjectList extends HttpServlet {
 			
 			List<SubjectVo> list = dao.list(pageNo, pageSize);
 			
+			out.println("<a href='form.html'>새 과목</a><br>");
 			out.println("<table border='1'>");
 			out.println("<tr>");
 			out.println("	<th>번호</th>");
@@ -48,7 +49,9 @@ public class SubjectList extends HttpServlet {
 			for (SubjectVo subject : list) {
 				out.println("<tr>");
 				out.println("	<td>" + subject.getNo() + "</td>");
-				out.println("	<td>" + subject.getTitle() + "</td>");
+				out.println("	<td><a href='detail.bit?no="
+						+ subject.getNo()
+						+ "'>" + subject.getTitle() + "</td>");
 				out.println("</tr>");
 			}
 			out.println("</table>");

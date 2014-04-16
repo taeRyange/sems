@@ -1,4 +1,4 @@
-package sems.course;
+package sems.users;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.CourseDao;
+import dao.UsersDao;
 
-@WebServlet("/course/delete.bit")
+@WebServlet("/users/delete.bit")
 @SuppressWarnings("serial")
-public class CourseDeleteServlet extends HttpServlet {
+public class UsersDeleteServlet extends HttpServlet {
 	@Override
 	protected void doGet(
 			HttpServletRequest request, HttpServletResponse response)
@@ -22,13 +22,13 @@ public class CourseDeleteServlet extends HttpServlet {
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		out.println("<html><head><title>과정삭제</title></head><body bgcolor='green', style='text-align:center'>");
+		out.println("<html><head><title>사용자 삭제</title></head><body bgcolor='#4E0085', style='text-align:center'>");
 		
 		try {
-			out.println("<h1>과정 삭제 결과</h1>");
+			out.println("<h1>사용자 삭제 결과</h1>");
 			
-			CourseDao dao = (CourseDao)this.getServletContext()
-					.getAttribute("courseDao");
+			UsersDao dao = (UsersDao)this.getServletContext()
+					.getAttribute("usersDao");
 			
 			int no = Integer.parseInt(request.getParameter("no"));
 			

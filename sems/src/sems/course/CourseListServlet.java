@@ -39,6 +39,7 @@ public class CourseListServlet extends HttpServlet {
 
 			List<CourseVo> list = dao.list(pageNo, pageSize);
 
+			out.println("<a href='form1.html'>새 과정</a><br>");
 			out.println("<table border='1' align='center'>");
 			out.println("<tr>");
 			out.println("	<th>번호</th>");
@@ -48,7 +49,9 @@ public class CourseListServlet extends HttpServlet {
 			for (CourseVo course : list) {
 				out.println("<tr>");
 				out.println("	<td>" + course.getNo() + "</td>");
-				out.println("	<td>" + course.getTitle() + "</td>");
+				out.println("	<td><a href='detail.bit?no="
+						+ course.getNo()
+						+ "'>" + course.getTitle() + "</td>");
 				out.println("</tr>");
 			}
 			out.println("</table>");
