@@ -25,7 +25,7 @@ public class UsersDetailServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<html><head><title>사용자 상세정보</title></head>");
-		out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"/home/common/list.css\">");
+		out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"/sems/common/list.css\">");
 
 		out.println("<body bgcolor='#4E0085'>");
 		try {

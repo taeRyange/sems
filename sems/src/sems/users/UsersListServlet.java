@@ -26,7 +26,7 @@ public class UsersListServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		out.println("<html><head><title>사용자 목록</title></head>");
-		out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"/home/common/list.css\">");
+		out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"/sems/common/list.css\">");
 		/*out.println("<style> table{width:500px; text-align:center; font-size:25px; border: 2px red;} "
 				+ "th{background-color:yellow;} "
 				+ "td{background-color:#ffcccc;} </style>");*/
