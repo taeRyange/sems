@@ -5,24 +5,57 @@
 <title>과정관리 테스트</title>
 </head>
 <style>
+
 body{
-font-size: 30pt;
+	background-color: #4E0085;
+
 }
 
+input {
+	margin-left: 3%;
+	-webkit-transition-property: -webkit-box-shadow, background;
+	-webkit-transition-duration: 0.25s;
+	padding: 6px;
+	border-bottom: 0px;
+	border-left: 0px;
+	border-right: 0px;
+	border-top: 1px solid #ad64e0;
+	-moz-box-shadow: 0px 0px 2px #000;
+	-webkit-box-shadow: 0px 0px 2px #000;
+	margin-bottom: 10px;
+	background: #8a33c6;
+	width: 100px;
+}
+
+input:hover {
+	-webkit-box-shadow: 0px 0px 4px #000;
+	background: #9d39e1;
+}
+
+
+
 </style>
-<body body bgcolor='green', style='text-align:center'>
-  <a href="/sems/subject/list.bit?pageNo=1&pageSize=10">과목목록</a>  <br>
-  <a href="/sems/subject/detail.bit?no=23">과목조회</a> <br>
+<body style='text-align: center'>
+
+<input type='button' value='사용자목록' onclick="location.href='/home/users/list.bit?pageNo=1&pageSize=10'">
+<!-- 	<a href="/home/users/list.bit?pageNo=1&pageSize=10">사용자 목록</a>
+	<br> -->
+
+<input type='button' value='과목목록' onclick="location.href='/home/subject/list.bit?pageNo=1&pageSize=10'">	
+<!-- 	<a href="/home/subject/list.bit?pageNo=1&pageSize=10">과목목록</a>
+	<br> -->
+	<!--   <a href="/sems/subject/detail.bit?no=23">과목조회</a> <br>
   <a href="/sems/subject/insert.bit?title=타이틀타이틀타이틀&dest=내용내용내용내용내용">과목등록</a> <br>
   <a href="/sems/subject/update.bit?no=18&title=제목변경222&dest=내용변경22">과목변경</a> <br>
-  <a href="/sems/subject/delete.bit?no=18">과목삭제</a> <br>
-  <div>------------------------------</div>
-
-	<a href="/sems/course/list.bit?pageNo=1&pageSize=10">과정목록</a>	<br>
-	<a href="/sems/course/detail.bit?no=8">과정조회</a>	<br>
-	<a href="/sems/course/insert.bit?title=과정제목제목&dest=과정내용22&hours=10">과정등록</a> <br>
-	<a href="/sems/course/update.bit?no=8&title=과정제목제목&dest=과정내용내용&hours=100">과정변경</a>	<br>
-	<a href="/sems/course/delete.bit?no=8">과정삭제</a>	<br>
+  <a href="/sems/subject/delete.bit?no=18">과목삭제</a> <br> -->
+	
+<input type='button' value='과정목록' onclick="location.href='/home/course/list.bit?pageNo=1&pageSize=10'">	
+	<!-- <a href="/home/course/list.bit?pageNo=1&pageSize=10">과정목록</a>
+	<br> -->
+	<!--  	 <a href="/home/course/detail.bit?no=">과정조회</a><br>
+	<a href="/home/course/insert.bit?title=&dest=&hours=">과정등록</a> <br>
+	<a href="/home/course/update.bit?no=8&title=과정제목제목&dest=과정내용내용&hours=100">과정변경</a><br>
+	<a href="/home/course/delete.bit?no=8">과정삭제</a><br>  -->
 
 
 </body>
