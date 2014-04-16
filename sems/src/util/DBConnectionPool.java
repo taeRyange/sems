@@ -71,8 +71,7 @@ public  class DBConnectionPool {
 	public void closeAll() {
 		for (Connection con : list) {
 			try {	con.close();	} catch (Exception e) {	}
-			System.out.println("태량태량태량태량태량태량태량태량태량");
-			System.out.println("Bye~!! 꽝~");
+
 		}
 	}
 
