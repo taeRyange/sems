@@ -4,9 +4,10 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import util.DBConnectionPool;
 import dao.MysqlCourseDao;
 import dao.MysqlSubjectDao;
-import util.DBConnectionPool;
+import dao.MysqlUsersDao;
 
 public class ContextLoaderListener implements ServletContextListener{
 	DBConnectionPool dbConnectionPool;
@@ -33,6 +34,11 @@ public class ContextLoaderListener implements ServletContextListener{
 		MysqlCourseDao courseDao = new MysqlCourseDao();
 		courseDao.setDBConnectionPool(dbConnectionPool);
 		sc.setAttribute("courseDao", courseDao);
+		
+		MysqlUsersDao usersDao = new MysqlUsersDao();
+		usersDao.setDBConnectionPool(dbConnectionPool);
+		sc.setAttribute("usersDao", usersDao);
+
 
 	}
 
